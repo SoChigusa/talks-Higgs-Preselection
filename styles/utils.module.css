@@ -85,3 +85,10 @@
   padding: 0px 0px 0px 1em;
   color: #34b390;
 }
+
+/* carousel settings */
+.carouselCaption {
+  top: 10%;
+  bottom: auto;
+  font-size: 110%
+}
