@@ -132,10 +132,13 @@ export function Slide({ id, setKey }) {
               <li>
                 <MathJax>Consider {"\\(Z \\to \\nu\\bar{\\nu}\\)"}, which has the best sensitivity to the Higgs couplings</MathJax>
               </li>
+              <li className={styles.emph}>
+                We use the following characteristic variables of the signal events
+              </li>
             </ul>
           </Row>
           <Row>
-            <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect}>
+            <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect} className={styles.carouselInner}>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -144,7 +147,7 @@ export function Slide({ id, setKey }) {
                 />
                 <Carousel.Caption className={styles.carouselCaption}>
                   <MathJax>
-                    Missing mass {"\\(M_{\\mathrm{miss}} \\equiv \\sqrt{E_{\\rm miss}^2-P_{T,{\\rm miss}}^2}\\)"}
+                    ① Missing mass {"\\(M_{\\mathrm{miss}} \\equiv \\sqrt{E_{\\rm miss}^2-P_{T,{\\rm miss}}^2}\\)"}
                   </MathJax>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -154,6 +157,12 @@ export function Slide({ id, setKey }) {
                   src="/images/pT.png"
                   alt="Scalar sum of the transverse momenta"
                 />
+                <Carousel.Caption className={styles.carouselCaption}>
+                  <MathJax>
+                    ② Scalar sum of visible momenta {"\\(p_T, p_L\\)"}<br />
+                    Maximum track momentum {"\\(p_{\\rm max}\\)"}
+                  </MathJax>
+                </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
@@ -161,6 +170,35 @@ export function Slide({ id, setKey }) {
                   src="/images/Nchd.png"
                   alt="# of charged tracks"
                 />
+                <Carousel.Caption className={styles.carouselCaption}>
+                  <MathJax>
+                    ③ Number of charged tracks {"\\(N_{\\rm chd}\\)"}
+                  </MathJax>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="/images/jettiness.png"
+                  alt="2-jettiness"
+                />
+                <Carousel.Caption className={styles.carouselCaption}>
+                  <MathJax>
+                    ④ 2-jettiness parameterized by {"\\(Y_{12}, Y_{23}\\)"}
+                  </MathJax>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://placehold.jp/32/003060/e0e0e0/286x180.png?text=No Image"
+                  alt="Dijet invariant mass"
+                />
+                <Carousel.Caption className={styles.carouselCaption}>
+                  <MathJax>
+                    ⑤ Dijet invariant mass {"\\(M_{jj}\\)"}
+                  </MathJax>
+                </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
           </Row>

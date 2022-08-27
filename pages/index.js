@@ -7,8 +7,8 @@ import { MathJaxContext, MathJax } from 'better-react-mathjax';
 
 export default function Home() {
   return (
-    <MathJaxContext>
-      <Layout title="PPP2022 poster by So Chigusa">
+    <Layout title="PPP2022 poster by So Chigusa">
+      <MathJaxContext>
         <div className={styles.main}>
           <Stack gap={3}>
             <h2 className={styles.subject}>
@@ -23,7 +23,7 @@ export default function Home() {
           </Stack>
           <Slides />
         </div>
-      </Layout >
-    </MathJaxContext>
+      </MathJaxContext>
+    </Layout >
   );
 }

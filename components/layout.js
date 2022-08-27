@@ -11,12 +11,12 @@ export default function Layout({ children, title }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <body className={styles.paddingNavbar}>
+      <div className={styles.paddingNavbar}>
         <Header></Header>
         <Container>
           {children}
         </Container>
-      </body>
+      </div>
     </SSRProvider>
   )
 }

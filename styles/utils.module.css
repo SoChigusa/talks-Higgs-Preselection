@@ -87,8 +87,13 @@
 }
 
 /* carousel settings */
+.carouselInner {
+  padding-bottom: 2em;
+}
+
 .carouselCaption {
-  top: 10%;
-  bottom: auto;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
   font-size: 110%
 }
