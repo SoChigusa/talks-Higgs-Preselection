@@ -2,7 +2,7 @@ import { MathJax } from 'better-react-mathjax';
 import { createContext, useContext, useState } from 'react';
 import { Container, Row, Tab, Tabs, Figure, Stack, Pagination, Carousel, OverlayTrigger, Tooltip, Button, Accordion } from 'react-bootstrap';
 import Link from 'next/link';
-import Image from 'next/Image';
+import Image from 'next/image';
 import styles from './slides.module.css';
 
 let pages = [
