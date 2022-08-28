@@ -27,7 +27,7 @@ export default function Slides() {
         activeKey={key}
         onSelect={(k) => setKey(k)}>
         {pages.map((page, index) => (
-          <Tab eventKey={page.id} title={page.title}>
+          <Tab eventKey={page.id} title={page.title} key={page.id}>
             <Slide pageNumber={index} />
           </Tab>
         ))}
@@ -37,12 +37,17 @@ export default function Slides() {
 }
 
 export function Slide({ pageNumber }) {
+  const [index, setIndex] = useState(0);
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   if (pageNumber == 0) {
     return (
       <SlideTemplate pageNumber={pageNumber}>
         <Row>
           <div className={styles.figureBox} style={{ height: 180 }}>
-            <Image src="/images/title.png" layout="fill" objectFit="contain" />
+            <Image src="/images/title.png" layout="fill" objectFit="contain" alt="Deeply Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders" />
           </div>
         </Row>
         <Row>
@@ -51,7 +56,7 @@ export function Slide({ pageNumber }) {
               Download the poster PDF (in Japanese) from <Link href="/files/poster.pdf"><a>here</a></Link>
             </li>
             <li>
-              Download our paper from <a href="https://arxiv.org/abs/2202.02534" target="_blank">here</a>
+              Download our paper from <a href="https://arxiv.org/abs/2202.02534" target="_blank" rel="noreferrer">here</a>
             </li>
           </ul>
         </Row>
@@ -71,7 +76,7 @@ export function Slide({ pageNumber }) {
             </ul>
             <li className={styles.emph}>
               First of all, we have to distinguish Higgs signal events from a huge amount of background events.
-              It is the so-called "Higgs Preselection" procedure.
+              It is the so-called &quot;Higgs Preselection&quot; procedure.
             </li>
           </ul>
         </Row>
@@ -101,16 +106,16 @@ export function Slide({ pageNumber }) {
               <li>
                 <Stack direction="horizontal" gap={3}>
                   Cut and Count
-                  <a href="https://link.springer.com/article/10.1140/epjc/s10052-013-2343-8" target="_blank">
-                    Ono, et al. '12
+                  <a href="https://link.springer.com/article/10.1140/epjc/s10052-013-2343-8" target="_blank" rel="noreferrer">
+                    Ono, et al. &apos;12
                   </a>
                 </Stack>
               </li>
               <li>
                 <Stack direction="horizontal" gap={3}>
                   Boosted Decision Tree (BDT)
-                  <a href="http://indico.ihep.ac.cn/event/6495/session/1/contribution/6/material/slides/0.pdf" target="_blank">
-                    slide by Bai '16
+                  <a href="http://indico.ihep.ac.cn/event/6495/session/1/contribution/6/material/slides/0.pdf" target="_blank" rel="noreferrer">
+                    slide by Bai &apos;16
                   </a>
                 </Stack>
               </li>
@@ -123,11 +128,6 @@ export function Slide({ pageNumber }) {
       </SlideTemplate>
     );
   } else if (pageNumber == 2) {
-    const [index, setIndex] = useState(0);
-    const handleSelect = (selectedIndex, e) => {
-      setIndex(selectedIndex);
-    };
-
     return (
       <SlideTemplate pageNumber={pageNumber}>
         <Row>
@@ -146,7 +146,7 @@ export function Slide({ pageNumber }) {
         <Row>
           <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect} className={styles.carouselInner}>
             <Carousel.Item>
-              <img
+              <Image
                 className="d-block w-100"
                 src="/images/Mmiss.png"
                 alt="Missing mass"
@@ -158,7 +158,7 @@ export function Slide({ pageNumber }) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
+              <Image
                 className="d-block w-100"
                 src="/images/pT.png"
                 alt="Scalar sum of the transverse momenta"
@@ -171,7 +171,7 @@ export function Slide({ pageNumber }) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
+              <Image
                 className="d-block w-100"
                 src="/images/Nchd.png"
                 alt="# of charged tracks"
@@ -183,7 +183,7 @@ export function Slide({ pageNumber }) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
+              <Image
                 className="d-block w-100"
                 src="/images/jettiness.png"
                 alt="2-jettiness"
@@ -195,7 +195,7 @@ export function Slide({ pageNumber }) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
+              <Image
                 className="d-block w-100"
                 src="https://placehold.jp/32/003060/e0e0e0/286x180.png?text=No Image"
                 alt="Dijet invariant mass"
@@ -215,12 +215,12 @@ export function Slide({ pageNumber }) {
       <SlideTemplate pageNumber={pageNumber}>
         <Row>
           <ul className={styles.list_triangle}>
-            <li>Cut flow used for the "cut and count" analysis</li>
+            <li>Cut flow used for the &quot;cut and count&quot; analysis</li>
           </ul>
         </Row>
         <Row>
           <div className={styles.figureBox} style={{ height: 240 }}>
-            <Image src="/images/cutflow.png" layout="fill" objectFit="contain" />
+            <Image src="/images/cutflow.png" layout="fill" objectFit="contain" alt="Table of cut flow" />
           </div>
         </Row>
         <Row>
@@ -280,7 +280,7 @@ export function Slide({ pageNumber }) {
         </Row>
         <Row>
           <div className={styles.figureBox} style={{ height: 240 }}>
-            <Image src="/images/architecture.png" layout="fill" objectFit="contain" />
+            <Image src="/images/architecture.png" layout="fill" objectFit="contain" alt="Architecture of our FCNN" />
           </div>
         </Row>
       </SlideTemplate>
@@ -298,7 +298,7 @@ export function Slide({ pageNumber }) {
         </Row>
         <Row>
           <div className={styles.figureBox} style={{ height: 120 }}>
-            <Image src="/images/results.png" layout="fill" objectFit="contain" />
+            <Image src="/images/results.png" layout="fill" objectFit="contain" alt="Result of preselection" />
           </div>
         </Row>
         <Row>
@@ -348,7 +348,7 @@ export function Slide({ pageNumber }) {
         </Row>
         <Row>
           <div className={styles.figureBox} style={{ height: 120 }}>
-            <Image src="/images/Yukawa.png" layout="fill" objectFit="contain" />
+            <Image src="/images/Yukawa.png" layout="fill" objectFit="contain" alt="Yukawa measurement prospect" />
           </div>
         </Row>
         <Row>
@@ -361,7 +361,7 @@ export function Slide({ pageNumber }) {
               <li>
                 <Stack gap={3} direction="horizontal">
                   Constraints on new physics through SMEFT/HEFT
-                  <a href="https://arxiv.org/abs/1512.06877" target="_blank">N. Craig, et al. '15</a>
+                  <a href="https://arxiv.org/abs/1512.06877" target="_blank" rel="noreferrer">N. Craig, et al. &apos;15</a>
                 </Stack>
               </li>
               <li>etc., a lot to enjoy!</li>
