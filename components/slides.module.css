@@ -76,7 +76,7 @@
 
 /* carousel settings */
 .carouselInner {
-  max-width: 50rem !important;
+  width: 250rem !important;
   margin: auto;
   padding-bottom: 2em;
 }

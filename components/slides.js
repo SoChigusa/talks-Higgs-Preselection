@@ -144,10 +144,12 @@ export function Slide({ pageNumber }) {
           </ul>
         </Row>
         <Row>
-          <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect} className={styles.carouselInner}>
-            <Carousel.Item>
+          <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect} className="mx-auto w-75" style={{ paddingBottom: 30 }}>
+            <Carousel.Item style={{ textAlign: "center" }}>
               <Image
                 className="d-block w-100"
+                width={640}
+                height={360}
                 src="/images/Mmiss.png"
                 alt="Missing mass"
               />
@@ -157,9 +159,11 @@ export function Slide({ pageNumber }) {
                 </MathJax>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item style={{ textAlign: "center" }}>
               <Image
                 className="d-block w-100"
+                width={640}
+                height={360}
                 src="/images/pT.png"
                 alt="Scalar sum of the transverse momenta"
               />
@@ -170,9 +174,11 @@ export function Slide({ pageNumber }) {
                 </MathJax>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item style={{ textAlign: "center" }}>
               <Image
                 className="d-block w-100"
+                width={640}
+                height={360}
                 src="/images/Nchd.png"
                 alt="# of charged tracks"
               />
@@ -182,9 +188,11 @@ export function Slide({ pageNumber }) {
                 </MathJax>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item style={{ textAlign: "center" }}>
               <Image
                 className="d-block w-100"
+                width={640}
+                height={360}
                 src="/images/jettiness.png"
                 alt="2-jettiness"
               />
@@ -194,12 +202,14 @@ export function Slide({ pageNumber }) {
                 </MathJax>
               </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
-              <Image
-                className="d-block w-100"
-                src="https://placehold.jp/32/003060/e0e0e0/286x180.png?text=No Image"
-                alt="Dijet invariant mass"
-              />
+            <Carousel.Item style={{ textAlign: "center" }}>
+              <picture>
+                <img
+                  className="d-block w-100"
+                  src="https://placehold.jp/32/003060/e0e0e0/286x180.png?text=No Image"
+                  alt="Dijet invariant mass"
+                />
+              </picture>
               <Carousel.Caption className={styles.carouselCaption}>
                 <MathJax>
                   ⑤ Dijet invariant mass {"\\(M_{jj}\\)"}
