@@ -1,6 +1,6 @@
 import { MathJax } from 'better-react-mathjax';
 import { createContext, useContext, useState } from 'react';
-import { Container, Row, Tab, Tabs, Figure, Stack, Pagination, Carousel, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { Container, Row, Tab, Tabs, Figure, Stack, Pagination, Carousel, OverlayTrigger, Tooltip, Button, Accordion } from 'react-bootstrap';
 import Link from 'next/link';
 import Image from 'next/Image';
 import styles from './slides.module.css';
@@ -11,7 +11,7 @@ let pages = [
   { id: "characteristics", title: "Characteristic variables" },
   { id: "cutflow", title: "Cut flow" },
   { id: "approaches", title: "Approaches" },
-  { id: "results", title: "Preselection results" },
+  { id: "results", title: "Results" },
   { id: "prospects", title: "Prospects" },
 ];
 
@@ -76,22 +76,23 @@ export function Slide({ pageNumber }) {
           </ul>
         </Row>
         <Row>
-          {/* <Figure>
+          <Figure>
             <Figure.Image
-              width={544}
-              height={363}
+              className="mx-auto d-block"
+              width={544 * 0.7}
+              height={363 * 0.7}
               alt="e+ e- > z h"
               src="/images/ee2zh2vvbb_annotation.png" />
-            <Figure.Caption>
+            <Figure.Caption style={{ textAlign: "center" }}>
               <MathJax>
-                The dominant Higgs production process \(e^+ e^- \to Z h\) <br />
-                associated with \(Z \to \nu \bar\nu\) and \(h \to b \bar b\)
+                The dominant Higgs production process \(e^+ e^- \to Z h\)
+                associated with \(Z \to \nu \bar\nu\) and \(h \to b \bar b\).
+              </MathJax>
+              <MathJax>
+                We consider {"\\(\\sqrt{s}=250\\,\\mathrm{GeV}\\)"} and {"\\(\\mathcal{L}=250\\,\\mathrm{fb}^{-1}\\)"} with the unpolarized beams.
               </MathJax>
             </Figure.Caption>
-          </Figure> */}
-          <div className={styles.figureBox} style={{ height: 240 }}>
-            <Image src="/images/ee2zh2vvbb_annotation.png" layout="fill" objectFit="contain" />
-          </div>
+          </Figure>
         </Row>
         <Row>
           <ul className={styles.list_triangle}>
@@ -145,17 +146,11 @@ export function Slide({ pageNumber }) {
         <Row>
           <Carousel interval={null} variant="dark" activeIndex={index} onSelect={handleSelect} className={styles.carouselInner}>
             <Carousel.Item>
-              {/* <OverlayTrigger
-                  placement="auto"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip("Mmiss")}
-                > */}
               <img
                 className="d-block w-100"
                 src="/images/Mmiss.png"
                 alt="Missing mass"
               />
-              {/* </OverlayTrigger> */}
               <Carousel.Caption className={styles.carouselCaption}>
                 <MathJax>
                   ① Missing mass {"\\(M_{\\mathrm{miss}} \\equiv \\sqrt{E_{\\rm miss}^2-P_{T,{\\rm miss}}^2}\\)"}
@@ -228,6 +223,42 @@ export function Slide({ pageNumber }) {
             <Image src="/images/cutflow.png" layout="fill" objectFit="contain" />
           </div>
         </Row>
+        <Row>
+          <Accordion className='d-block w-100 mx-auto'>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Supplements</Accordion.Header>
+              <Accordion.Body>
+                <ul className={styles.list_triangle}>
+                  <li className={styles.fine}>
+                    <MathJax>
+                      {"\\(M_{\\mathrm{miss}}\\)"} and {"\\(M_{jj}\\)"} cuts a large amount of BG events with smoothly distributed (or zero) invariant mass.
+                    </MathJax>
+                  </li>
+                  <li className={styles.fine}>
+                    <MathJax>
+                      Most of {"\\(q\\bar{q}\\)"} BG events without large missing \(p_T\) are rejected by \(p_T\) and \(p_L\) cuts.
+                    </MathJax>
+                  </li>
+                  <li className={styles.fine}>
+                    <MathJax>
+                      Most of leptonic BG events are rejected by {"\\(N_{\\rm chd}\\)"} cuts.
+                    </MathJax>
+                  </li>
+                  <li className={styles.fine}>
+                    <MathJax>
+                      Most of three-prong events from {"\\(W^+ W^-\\)"} and {"\\(e^\\pm \\nu W^\\mp\\)"} channels are rejected by {"\\(Y_{23}\\)"} and {"\\(Y_{12}\\)"} cuts.
+                    </MathJax>
+                  </li>
+                  <li className={styles.fine}>
+                    <MathJax>
+                      The {"\\(ZZ\\)"} channel is the hardest BG process to remove, while the {"\\(W^{+} W^{-}\\)"} and {"\\(q\\bar{q}\\)"} channels are also non-negligible due to large cross sections.
+                    </MathJax>
+                  </li>
+                </ul>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </Row>
       </SlideTemplate>
     );
   } else if (pageNumber == 4) {
@@ -286,21 +317,19 @@ export function Slide({ pageNumber }) {
           </ul>
         </Row>
         <Row>
-          {/* <Figure>
-              <Figure.Image
-                width={799}
-                height={673}
-                alt="S vs B"
-                src="/images/sigeff.png" />
-              <Figure.Caption>
-                <MathJax>
-                  # of signals {"\\(N_{\\rm sig}\\)"} and # of backgrounds {"\\(N_{\\rm bkg}\\)"} for various choices of threshold values
-                </MathJax>
-              </Figure.Caption>
-            </Figure> */}
-          <div className={styles.figureBox} style={{ height: 320 }}>
-            <Image src="/images/sigeff.png" layout="fill" objectFit="contain" />
-          </div>
+          <Figure>
+            <Figure.Image
+              className="mx-auto d-block"
+              width={799 * 0.6}
+              height={673 * 0.6}
+              alt="S vs B"
+              src="/images/sigeff.png" />
+            <Figure.Caption style={{ textAlign: "center" }}>
+              <MathJax>
+                # of signals {"\\(N_{\\rm sig}\\)"} and backgrounds {"\\(N_{\\rm bkg}\\)"} for various choices of threshold values
+              </MathJax>
+            </Figure.Caption>
+          </Figure>
         </Row>
       </SlideTemplate>
     );
