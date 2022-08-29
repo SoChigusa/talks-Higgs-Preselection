@@ -1,6 +1,6 @@
 import { MathJax } from 'better-react-mathjax';
-import { createContext, useContext, useState } from 'react';
-import { Container, Row, Tab, Tabs, Figure, Stack, Pagination, Carousel, OverlayTrigger, Tooltip, Button, Accordion } from 'react-bootstrap';
+import { createContext, useContext, useState, useRef } from 'react';
+import { Badge, Container, Row, Tab, Tabs, Figure, Stack, Carousel, Tooltip, Button, Accordion, OverlayTrigger } from 'react-bootstrap';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './slides.module.css';
@@ -37,6 +37,7 @@ export default function Slides() {
 }
 
 export function Slide({ pageNumber }) {
+  // for caroulsel
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -47,7 +48,12 @@ export function Slide({ pageNumber }) {
       <SlideTemplate pageNumber={pageNumber}>
         <Row>
           <div className={styles.figureBox} style={{ height: 180 }}>
-            <Image src="/images/title.png" layout="fill" objectFit="contain" alt="Deeply Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders" />
+            <Image
+              src="/images/title.png"
+              priority="true"
+              layout="fill"
+              objectFit="contain"
+              alt="Deeply Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders" />
           </div>
         </Row>
         <Row>
@@ -56,7 +62,21 @@ export function Slide({ pageNumber }) {
               Download the poster PDF (in Japanese) from <Link href="/files/poster.pdf"><a>here</a></Link>
             </li>
             <li>
-              Download our paper from <a href="https://arxiv.org/abs/2202.02534" target="_blank" rel="noreferrer">here</a>
+              Download our paper from <a
+                href="https://www.sciencedirect.com/science/article/pii/S037026932200435X?via%3Dihub"
+                target="_blank"
+                rel="noreferrer">here </a>
+              (or <a
+                href="https://arxiv.org/abs/2202.02534"
+                target="_blank"
+                rel="noreferrer">here </a>
+              if you prefer arXiv)
+            </li>
+            <li>
+              Contact information for any questions or suggestions is provided <a
+                href="https://sochigusa.bitbucket.io/"
+                target="_blank"
+                rel="noreferrer">here</a>
             </li>
           </ul>
         </Row>
@@ -272,6 +292,32 @@ export function Slide({ pageNumber }) {
       </SlideTemplate>
     );
   } else if (pageNumber == 4) {
+    // for tooltips
+    const BDTtooltip = (props) => (
+      <Tooltip id="badge-tooltip" {...props}>
+        <ul style={{ textAlign: "left", margin: 0 }}>
+          <li className={styles.fine}>Scikit-learn</li>
+          <li className={styles.fine}>&#8804; 25 depth</li>
+          <li className={styles.fine}>&#8805; 30 samples per a leaf</li>
+          <li className={styles.fine}>AdaBoost-SAMME</li>
+          <li className={styles.fine}>Learning rate 0.1</li>
+          <li className={styles.fine}>&#8804; 75 estimators</li>
+        </ul>
+      </Tooltip>
+    );
+    const FCNNtooltip = (props) => (
+      <Tooltip id="badge-tooltip" {...props}>
+        <ul style={{ textAlign: "left", margin: 0 }}>
+          <li className={styles.fine}>Keras 2.7.0</li>
+          <li className={styles.fine}>Tensorflow 2.7.0</li>
+          <li className={styles.fine}>2 hidden layers with 100 neurons</li>
+          <li className={styles.fine}>7 hidden layers with 90 neurons</li>
+          <li className={styles.fine}>ReLU for hidden layers</li>
+          <li className={styles.fine}>ADAM optimizer</li>
+        </ul>
+      </Tooltip>
+    );
+
     return (
       <SlideTemplate pageNumber={pageNumber}>
         <Row>
@@ -280,20 +326,44 @@ export function Slide({ pageNumber }) {
               For comparison, we redo the analyses based on
               <ul className={styles.list_bar}>
                 <li>Cut and Count</li>
-                <li>BDT</li>
+                <li>
+                  <Stack gap={3} direction="horizontal">
+                    BDT
+                    <OverlayTrigger
+                      placement="right"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={BDTtooltip}
+                    >
+                      <Badge variant="secondary">
+                        See set ups
+                      </Badge>
+                    </OverlayTrigger>
+                  </Stack>
+                </li>
               </ul>
             </li>
             <li className={styles.emph}>
-              Our main analysis is based on the fully-connected neural network (FCNN)
+              <Stack gap={3} direction="horizontal">
+                Our main analysis is based on the fully-connected neural network (FCNN)
+                <OverlayTrigger
+                  placement="right"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={FCNNtooltip}
+                >
+                  <Badge variant="secondary">
+                    See set ups
+                  </Badge>
+                </OverlayTrigger>
+              </Stack>
             </li>
           </ul>
-        </Row>
+        </Row >
         <Row>
           <div className={styles.figureBox} style={{ height: 240 }}>
             <Image src="/images/architecture.png" layout="fill" objectFit="contain" alt="Architecture of our FCNN" />
           </div>
         </Row>
-      </SlideTemplate>
+      </SlideTemplate >
     );
   } else if (pageNumber == 5) {
     return (
