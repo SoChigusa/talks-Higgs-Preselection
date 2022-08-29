@@ -6,7 +6,10 @@ import { MathJaxContext, MathJax } from 'better-react-mathjax';
 
 export default function Home() {
   return (
-    <Layout title="PPP2022 poster by So Chigusa">
+    <Layout
+      title="PPP2022 poster by So Chigusa"
+      description="Deeply Learned Preselection of Higgs Dijet Decays at Future Lepton Colliders"
+    >
       <MathJaxContext>
         <div className={styles.main}>
           <Slides />
