@@ -57,6 +57,18 @@ export function Slide({ pageNumber }) {
           </div>
         </Row>
         <Row>
+          <Accordion className='d-block w-100 mx-auto'>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Abstract</Accordion.Header>
+              <Accordion.Body className={styles.fine}>
+                <MathJax>
+                  Future electron-positron colliders will play a leading role in the precision measurement of Higgs boson couplings which is one of the central interests in particle physics. Aiming at maximizing the performance to measure the Higgs couplings to the bottom, charm and strange quarks, we develop machine learning methods to improve the selection of events with a Higgs decaying to dijets. Our methods are based on the Boosted Decision Tree (BDT), Fully-Connected Neural Network (FCNN) and Convolutional Neural Network (CNN). We find that the BDT and FCNN-based algorithms outperform the conventional cut-based method. With our improved selection of Higgs decaying to dijet events using the FCNN, the charm quark signal strength is measured with a \(16\%\) error, which is roughly a factor of two better than the \(34\%\) precision obtained by the cut-based analysis. Also, the strange quark signal strength is constrained as {"\\(\\mu_{ss} \\lesssim 35\\)"} at the \(95\%\) C.L. with the FCNN, which is to be compared with {"\\(\\mu_{ss} \\lesssim 70\\)"} obtained by the cut-based method.
+                </MathJax>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </Row>
+        <Row>
           <ul className={styles.list_triangle}>
             <li>
               Download the poster PDF (in Japanese) from <Link href="/files/poster.pdf"><a>here</a></Link>
